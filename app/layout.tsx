@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import "./globals.css";
 import NavBar from '~/components/layout/NavBar';
+import { ThemeProvider } from "~/components/theme-provider";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,13 +23,20 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body >
-          <main className="flex flex-col min-h-screen bg-secondary">
-            <NavBar />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <main className="flex flex-col min-h-screen bg-secondary">
+              <NavBar />
 
-            <section className="flex-grow">
-              {children}
-            </section>
-          </main>
+              <section className="flex-grow">
+                {children}
+              </section>
+            </main>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
