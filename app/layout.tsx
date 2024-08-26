@@ -20,15 +20,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <NavBar />
         <body >
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            {/* <UserButton /> */}
-          </SignedIn>
-          {children}
+          <main className="flex flex-col min-h-screen bg-secondary">
+            <NavBar />
+
+            <section className="flex-grow">
+              {children}
+            </section>
+          </main>
         </body>
       </html>
     </ClerkProvider>
